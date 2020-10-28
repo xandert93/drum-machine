@@ -123,3 +123,33 @@ input[type="range"] {
 .footer {
   margin-top: 120px;
 }
+
+@media (min-width: 500px) {
+  * {
+    transform: scale(1.1);
+  }
+
+  .controls-container {
+    margin-left: 60px;
+  }
+}
+
+@media (min-width: 850px) {
+  * {
+    transform: scale(1.15);
+  }
+
+  .controls-container {
+    margin-left: 80px;
+  }
+}
+
+@media (min-width: 1150px) {
+  * {
+    transform: scale(1.2);
+  }
+
+  .controls-container {
+    margin-left: 120px;
+  }
+}
