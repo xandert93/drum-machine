@@ -1,10 +1,16 @@
 import React from "react";
 
-function Volume() {
+function Volume({ volume, setVolume }) {
   return (
-    <label>
-      <input type="range"></input>
-    </label>
+    <div className="volume-container">
+      <p className="volume-text">VOL: {volume}</p>
+      <input
+        className="volume-slider"
+        value={volume}
+        onChange={setVolume}
+        type="range"
+      ></input>
+    </div>
   );
 }
 

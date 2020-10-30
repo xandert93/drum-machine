@@ -5,23 +5,30 @@ import Header from "./components/Header";
 import DrumPadContainer from "./components/DrumPadContainer";
 import Controls from "./components/Controls";
 import Footer from "./components/Footer";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      power: false,
+      volume: 50,
     };
   }
 
+  setVolume = (e) => {
+    this.setState({ volume: e.target.value });
+  };
+
   render() {
-    let { power } = this.state;
+    let { volume } = this.state;
     return (
       <div className="app">
         <Header />
         <div className="drum-machine">
-          <DrumPadContainer />
-          <Controls power={power} />
+          <ErrorBoundary>
+            <DrumPadContainer volume={volume} />
+          </ErrorBoundary>
+          <Controls volume={volume} setVolume={this.setVolume} />
         </div>
         <Footer />
       </div>

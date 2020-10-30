@@ -3,10 +3,8 @@ import React, { Component, createRef } from "react";
 class DrumPad extends Component {
   constructor() {
     super();
+    this.state = { drumpadActive: false };
     this.audioRef = createRef();
-    this.state = {
-      drumpadActive: false,
-    };
   }
 
   handleKeyPress = (e) =>
@@ -15,11 +13,11 @@ class DrumPad extends Component {
   playAudio = (e) => {
     this.setState({ drumpadActive: true });
     let audio = this.audioRef.current;
-    audio.volume = document.querySelector('input[type="range"]').value / 100;
+    audio.volume = this.props.volume / 100;
     audio.currentTime = 0;
     audio.play();
-    setTimeout(() => this.setState({ drumpadActive: false }), 200);
-    document.querySelector(".textbox").innerText = audio.id;
+    setTimeout(() => this.setState({ drumpadActive: false }), 100);
+    document.querySelector(".sound-display").innerText = audio.id;
   };
 
   render() {

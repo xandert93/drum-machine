@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+  color: white;
+  text-align: center;
+  font-family: "Roboto";
+}
+
+body {
+  margin: 0;
+  background: var(--bg-image);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
