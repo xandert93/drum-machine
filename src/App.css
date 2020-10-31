@@ -1,9 +1,9 @@
 :root {
-  --bg-image: linear-gradient(170deg, black, #c90e0e);
+  --bg-image: linear-gradient(230deg, rgb(0, 0, 182), rgb(255, 0, 0));
 }
 
-body {
-  overflow: hidden;
+*:not(.switch) {
+  transform: scale(1.05);
 }
 
 .app {
@@ -16,18 +16,19 @@ body {
 }
 
 h1 {
-  margin-bottom: 100px;
+  margin-bottom: 40px;
   text-transform: uppercase;
   letter-spacing: 8px;
 }
 
 .drum-machine {
-  min-width: 768px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
 .drumpad-container {
+  order: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
@@ -63,11 +64,12 @@ h1 {
 }
 
 .controls-container {
-  margin-left: 20px;
+  order: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .switch-container {
@@ -133,7 +135,7 @@ span.off {
 .sound-display {
   width: 150px;
   padding: 7px 0 5px 0;
-  margin-top: 5px;
+  margin-top: 15px;
   background: linear-gradient(170deg, black, #0713c08e);
   border-radius: 5px;
   box-shadow: 1px 2px 4px rgb(0, 1, 44);
@@ -142,7 +144,7 @@ span.off {
 .volume-text {
   font-family: "Alfa Slab One", cursive;
   font-size: 10px;
-  margin: 10px 0;
+  margin: 15px 0;
   letter-spacing: 1px;
   font-style: italic;
 }
@@ -157,6 +159,7 @@ span.off {
   border-radius: 5px;
   border: 2px black solid;
   box-shadow: 0px 1px 10px 1px black;
+  margin-bottom: 12px;
 }
 
 .volume-slider:focus {
@@ -181,20 +184,42 @@ span.off {
 }
 
 .footer {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
-@media (min-width: 480px) {
-  *:not(.switch) {
-    transform: scale(1.07);
+@media (min-width: 501px) {
+  :root {
+    --bg-image: linear-gradient(170deg, black, #c90e0e);
+  }
+
+  h1 {
+    margin-bottom: 100px;
+  }
+
+  .drum-machine {
+    min-width: 768px;
+    flex-direction: row;
+  }
+
+  .drumpad-container {
+    order: 0;
   }
 
   .controls-container {
-    margin-left: 60px;
+    order: 1;
+    margin-left: 45px;
+    margin-bottom: 0px;
+  }
+
+  .footer {
+    margin-top: 100px;
   }
 }
 
 @media (min-width: 768px) {
+  :root {
+    --bg-image: linear-gradient(230deg, rgb(0, 0, 182), rgb(255, 0, 0));
+  }
   *:not(.switch) {
     transform: scale(1.11);
   }
@@ -205,6 +230,9 @@ span.off {
 }
 
 @media (min-width: 1024px) {
+  :root {
+    --bg-image: linear-gradient(170deg, black, #c90e0e);
+  }
   *:not(.switch) {
     transform: scale(1.15);
   }
@@ -223,6 +251,9 @@ span.off {
 }
 
 @media (min-width: 1200px) {
+  :root {
+    --bg-image: linear-gradient(230deg, rgb(0, 0, 182), rgb(255, 0, 0));
+  }
   *:not(.switch) {
     transform: scale(1.18);
   }

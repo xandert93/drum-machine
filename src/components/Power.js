@@ -1,11 +1,12 @@
 import React from "react";
 
-function Power({ power, togglePower }) {
+function Power({ powerSwitched, togglePowerSwitch, togglePower }) {
   return (
-    <div className={power ? "switch-container on" : "switch-container"}>
+    <div className={powerSwitched ? "switch-container on" : "switch-container"}>
       <button
-        onClick={togglePower}
-        className={power ? "switch on" : "switch"}
+        onClick={togglePowerSwitch}
+        onTransitionEnd={togglePower}
+        className={powerSwitched ? "switch on" : "switch"}
       ></button>
       <span className="fas fa-power-off on"></span>
       <span className="fas fa-power-off off"></span>

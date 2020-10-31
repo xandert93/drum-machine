@@ -6,8 +6,15 @@ import SoundDisplay from "./SoundDisplay";
 class Controls extends Component {
   constructor() {
     super();
-    this.state = { power: false };
+    this.state = {
+      powerSwitched: false,
+      power: false,
+    };
   }
+
+  togglePowerSwitch = () => {
+    this.setState({ powerSwitched: !this.state.powerSwitched });
+  };
 
   togglePower = () => {
     this.setState({ power: !this.state.power });
@@ -15,10 +22,14 @@ class Controls extends Component {
 
   render() {
     let { volume, setVolume } = this.props;
-    let { power } = this.state;
+    let { powerSwitched, power } = this.state;
     return (
       <div className="controls-container">
-        <Power power={power} togglePower={this.togglePower} />
+        <Power
+          powerSwitched={powerSwitched}
+          togglePower={this.togglePower}
+          togglePowerSwitch={this.togglePowerSwitch}
+        />
         {power && (
           <>
             <SoundDisplay />
