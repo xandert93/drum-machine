@@ -10,6 +10,7 @@ class DrumPadContainer extends Component {
         letter={letter}
         soundURL={url}
         id={id}
+        power={this.props.power}
         volume={this.props.volume}
       />
     ));

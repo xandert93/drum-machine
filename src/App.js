@@ -11,24 +11,41 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      powerSwitched: false,
+      power: false,
       volume: 50,
     };
   }
+
+  togglePowerSwitch = () => {
+    this.setState({ powerSwitched: !this.state.powerSwitched });
+  };
+
+  togglePower = () => {
+    this.setState({ power: !this.state.power });
+  };
 
   setVolume = (e) => {
     this.setState({ volume: e.target.value });
   };
 
   render() {
-    let { volume } = this.state;
+    let { powerSwitched, power, volume } = this.state;
     return (
       <div className="app">
         <Header />
         <div className="drum-machine">
           <ErrorBoundary>
-            <DrumPadContainer volume={volume} />
+            <DrumPadContainer power={power} volume={volume} />
           </ErrorBoundary>
-          <Controls volume={volume} setVolume={this.setVolume} />
+          <Controls
+            powerSwitched={powerSwitched}
+            power={power}
+            volume={volume}
+            setVolume={this.setVolume}
+            togglePowerSwitch={this.togglePowerSwitch}
+            togglePower={this.togglePower}
+          />
         </div>
         <Footer />
       </div>
