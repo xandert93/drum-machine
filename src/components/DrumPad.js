@@ -26,7 +26,7 @@ class DrumPad extends Component {
     return (
       <button
         className={drumpadActive ? "drumpad active" : "drumpad"}
-        onClick={this.props.power && this.playAudio}
+        onClick={this.props.power ? this.playAudio : undefined}
       >
         {letter}
         <audio ref={this.audioRef} src={soundURL} id={id}></audio>
