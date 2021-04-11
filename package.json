@@ -1,6 +1,6 @@
 {
   "name": "drum-machine",
-  "homepage": "https://arun13sl.github.io/drum-machine",
+  "homepage": "https://xandert93.github.io/drum-machine",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,7 +20,6 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
-
   },
   "eslintConfig": {
     "extends": [

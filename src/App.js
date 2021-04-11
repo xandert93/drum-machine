@@ -1,51 +1,42 @@
-import "./App.css";
+import './App.css';
 
-import React, { Component } from "react";
-import Header from "./components/Header";
-import DrumPadContainer from "./components/DrumPadContainer";
-import Controls from "./components/Controls";
-import Footer from "./components/Footer";
-import ErrorBoundary from "./components/ErrorBoundary";
+import React, { Component } from 'react';
+import Header from './components/layout/Header';
+import DrumPadsContainer from './components/DrumPadsContainer';
+import Controls from './components/Controls';
+import Footer from './components/layout/Footer';
+import ErrorBoundary from './components/ErrorBoundary';
+import { GlobalProvider } from './contexts/globalContext';
 
-class App extends Component {
-  constructor() {
-    super();
+export class App extends Component {
+  constructor(props) {
+    super(props);
+
     this.state = {
-      powerSwitched: false,
       power: false,
       volume: 50,
+      displayNode: null,
     };
   }
 
-  togglePowerSwitch = () => {
-    this.setState({ powerSwitched: !this.state.powerSwitched });
-  };
-
-  togglePower = () => {
-    this.setState({ power: !this.state.power });
-  };
-
-  setVolume = (e) => {
-    this.setState({ volume: e.target.value });
-  };
+  setPower = () => this.setState((state) => ({ power: !state.power }));
+  changeVolume = (e) => this.setState({ volume: e.target.value });
+  setDisplayNode = (node) => this.setState({ displayNode: node });
 
   render() {
-    let { powerSwitched, power, volume } = this.state;
+    const { setPower, changeVolume, setDisplayNode } = this;
     return (
       <div className="app">
         <Header />
-        <div className="drum-machine">
-          <ErrorBoundary>
-            <DrumPadContainer power={power} volume={volume} />
-          </ErrorBoundary>
-          <Controls
-            powerSwitched={powerSwitched}
-            power={power}
-            volume={volume}
-            setVolume={this.setVolume}
-            togglePowerSwitch={this.togglePowerSwitch}
-            togglePower={this.togglePower}
-          />
+        <div className="drum-machine-container">
+          <GlobalProvider
+            value={{ ...this.state, setPower, changeVolume, setDisplayNode }}
+          >
+            <Controls />
+            <ErrorBoundary>
+              <DrumPadsContainer />
+            </ErrorBoundary>
+          </GlobalProvider>
         </div>
         <Footer />
       </div>

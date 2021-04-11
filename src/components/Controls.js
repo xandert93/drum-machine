@@ -1,34 +1,24 @@
-import React, { Component } from "react";
-import Volume from "./Volume";
-import Power from "./Power";
-import SoundDisplay from "./SoundDisplay";
+import React from 'react';
+import Volume from './controls/Volume';
+import PowerButton from './controls/PowerButton';
+import SoundDisplay from './controls/SoundDisplay';
+import { GlobalConsumer } from '../contexts/globalContext';
 
-class Controls extends Component {
-  render() {
-    let {
-      togglePowerSwitch,
-      togglePower,
-      powerSwitched,
-      power,
-      volume,
-      setVolume,
-    } = this.props;
-    return (
-      <div className="controls-container">
-        <Power
-          powerSwitched={powerSwitched}
-          togglePower={togglePower}
-          togglePowerSwitch={togglePowerSwitch}
-        />
-        {power && (
-          <>
-            <SoundDisplay />
-            <Volume volume={volume} setVolume={setVolume} />
-          </>
-        )}
-      </div>
-    );
-  }
+function Controls() {
+  return (
+    <GlobalConsumer>
+      {({ power, setDisplayNode }) => (
+        <div className="controls-container">
+          <PowerButton />
+          {power && (
+            <>
+              <SoundDisplay setDisplayNode={setDisplayNode} />
+              <Volume />
+            </>
+          )}
+        </div>
+      )}
+    </GlobalConsumer>
+  );
 }
-
 export default Controls;

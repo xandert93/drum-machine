@@ -1,10 +1,11 @@
-import React from "react";
+import React from 'react';
 
 function Footer() {
   return (
     <footer className="footer" title="Visit GitHub page">
-      &copy;{" "}
+      &copy;{' '}
       <a
+        className="link--github"
         href="https://github.com/xandert93"
         target="_blank"
         rel="noopener noreferrer"
