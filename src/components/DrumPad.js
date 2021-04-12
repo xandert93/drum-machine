@@ -3,7 +3,7 @@ import React, { Component, createRef } from 'react';
 class DrumPad extends Component {
   constructor() {
     super();
-    this.state = { drumpadActive: false };
+    this.state = { isDrumPadActive: false };
     this.audioRef = createRef();
   }
 
@@ -13,21 +13,23 @@ class DrumPad extends Component {
   };
 
   playAudio = (e) => {
-    this.setState({ drumpadActive: true });
+    this.setState({ isDrumPadActive: true });
     const audio = this.audioRef.current;
     audio.volume = this.props.volume / 100;
     audio.currentTime = 0;
     audio.play();
-    setTimeout(() => this.setState({ drumpadActive: false }), 100);
+    setTimeout(() => this.setState({ isDrumPadActive: false }), 100);
     this.props.displayNode.textContent = audio.id;
   };
 
   render() {
     let { letter, soundURL, id, power } = this.props;
-    let { drumpadActive } = this.state;
+    let { isDrumPadActive } = this.state;
     return (
       <div
-        className={`drumpad ${drumpadActive ? 'active' : ''}`}
+        className={`drum-set__drum-pad ${
+          isDrumPadActive ? 'drum-set__drum-pad--active' : ''
+        }`}
         style={{ pointerEvents: power ? 'auto' : 'none' }}
         onClick={power ? this.playAudio : undefined}
       >

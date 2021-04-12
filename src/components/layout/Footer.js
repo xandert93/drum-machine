@@ -5,7 +5,7 @@ function Footer() {
     <footer className="footer" title="Visit GitHub page">
       &copy;{' '}
       <a
-        className="link--github"
+        className="footer__link footer__link--github"
         href="https://github.com/xandert93"
         target="_blank"
         rel="noopener noreferrer"

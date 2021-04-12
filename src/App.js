@@ -1,8 +1,8 @@
-import './App.css';
+import './App.scss';
 
 import React, { Component } from 'react';
 import Header from './components/layout/Header';
-import DrumPadsContainer from './components/DrumPadsContainer';
+import DrumSet from './components/DrumSet';
 import Controls from './components/Controls';
 import Footer from './components/layout/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -34,7 +34,7 @@ export class App extends Component {
           >
             <Controls />
             <ErrorBoundary>
-              <DrumPadsContainer />
+              <DrumSet />
             </ErrorBoundary>
           </GlobalProvider>
         </div>

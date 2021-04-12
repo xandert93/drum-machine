@@ -3,11 +3,11 @@ import { GlobalConsumer } from '../contexts/globalContext';
 import { sounds } from '../data/sounds';
 import DrumPad from './DrumPad';
 
-function DrumPadsContainer() {
+function DrumSet() {
   return (
     <GlobalConsumer>
       {({ power, volume, displayNode }) => (
-        <div className="drumpads-container">
+        <div className={`drum-set ${power ? 'drum-set--on' : ''}`}>
           {sounds.map(({ id, letter, url }) => (
             <DrumPad
               key={id}
@@ -25,4 +25,4 @@ function DrumPadsContainer() {
   );
 }
 
-export default DrumPadsContainer;
+export default DrumSet;
