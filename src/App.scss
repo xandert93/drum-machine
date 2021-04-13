@@ -198,12 +198,12 @@ body {
   color: white;
   text-align: center;
   user-select: none;
-  overflow: hidden;
 }
 
 .app {
   height: 100vh;
   @include flexBox($fd: column);
+  overflow: auto;
 }
 
 .heading-primary {
